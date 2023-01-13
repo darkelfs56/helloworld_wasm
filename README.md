@@ -1,7 +1,7 @@
 # helloworld_wasm
 Introduction and learning about WASM in web development through my study group.
 
-**You can run a live local server to host the hello.html file and see its results in the browser console.**
+**You can run a live local server (VS Code extension exists for this) to host the hello.html file and see its results in the browser console.**
 
 ### Relevant links:
 1) https://hub.docker.com/r/emscripten/emsdk
