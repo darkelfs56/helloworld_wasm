@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <h1 id="urmom">Hello! This is to test wasm based web.</h1>
+    </div>
+    <script>
+      const importObject = {
+        module: {},
+        env: {
+          memory: new WebAssembly.Memory({ initial: 256 }),
+        },
+      };
+
+      WebAssembly.instantiateStreaming(fetch("helloworld.wasm"), importObject).then((result) => {
+        console.log("Available exports are: ", result.instance.exports);
+        const add = result.instance.exports.add;
+        console.log(add(4, 5));
+        console.log(add(10, 10));
+
+        document.getElementById("mybutton").addEventListener("click", () => {
+          alert("check console");
+          // const result = Module.ccall(
+          //   "add", // name of C function
+          //   null, // return type
+          //   null, // argument types
+          //   null // arguments
+          // );
+          document.getElementById("urmom").innerHTML = add(69,69);
+        });
+      });
+    </script>
+    <button id="mybutton">Run myFunction</button>
+  </body>
+</html>
